@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { WagmiConfig, createClient, configureChains, chain } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import Container from './components/Container';
+
+const { provider, webSocketProvider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [publicProvider()],
+);
+
+const client = createClient({
+  autoConnect: true,
+  provider,
+  webSocketProvider,
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WagmiConfig client={client}>
+      <Container />
+    </WagmiConfig>
   );
 }
 
