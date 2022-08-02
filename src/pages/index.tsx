@@ -1,8 +1,8 @@
 import { useAccount } from 'wagmi';
-import Profile from './Profile';
-import SendTransaction from './SendTransaction';
-import MintNFT from './MintNFT';
-import SignMessage from './SignMessage';
+import SendTransaction from '../components/SendTransaction';
+import MintNFT from '../components/MintNFT';
+import SignMessage from '../components/SignMessage';
+import Profile from '../components/Profile';
 
 export default function Container() {
   const { isConnected, isDisconnected } = useAccount();

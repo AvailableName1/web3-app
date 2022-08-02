@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['airbnb', 'airbnb-typescript'],
+  extends: ['next', 'airbnb', 'airbnb-typescript'],
   plugins: ['babel', 'import', 'jsx-a11y', 'react', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {

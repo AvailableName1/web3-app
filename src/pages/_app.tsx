@@ -1,8 +1,9 @@
+import type { AppProps } from 'next/app';
 import { WagmiConfig, createClient, configureChains, chain } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
-import Container from './components/Container';
+import Head from 'next/head';
 
 const alchemyApiKey = process.env.REACT_APP_ALCHEMY_API_KEY;
 
@@ -18,12 +19,13 @@ const client = createClient({
   webSocketProvider,
 });
 
-function App() {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={client}>
-      <Container />
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Component {...pageProps} />
     </WagmiConfig>
   );
 }
-
-export default App;
